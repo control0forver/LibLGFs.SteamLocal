@@ -4,6 +4,17 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>$(AssemblyName).$(Configuration)</PackageId>
+    <Authors>TheLGF, LGF-Studio</Authors>
+    <Company>LGF-Studio</Company>
+    <Copyright>Copyright (c) 2026 TheLGF, LGF-Studio</Copyright>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/control0forver/LibLGFs.SteamLocal</RepositoryUrl>
+    <PackageTags>steam</PackageTags>
+    <IncludeSymbols>True</IncludeSymbols>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>

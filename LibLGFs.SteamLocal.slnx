@@ -1,4 +1,10 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitattributes" />
+    <File Path=".gitignore" />
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+  </Folder>
   <Project Path="LibLGFs.SteamLocal/LibLGFs.SteamLocal.csproj" />
   <Project Path="Test/Test.csproj" Id="fb81f382-a9e3-457b-9d99-09eb17d9a867" />
 </Solution>
