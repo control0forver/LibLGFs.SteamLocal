@@ -23,7 +23,7 @@ bool found = false;
 var installedGames = await LibLGFs.SteamLocal.SteamLibrary.SteamApps.EnumInstalledGamesAsync();
 foreach (var installedGame in installedGames)
 {
-    if (installedGame.AppState?.AppId?.Equals("Dead Cells") ?? false)
+    if (installedGame.AppState?.AppId?.Equals("588650") ?? false)
         goto found;
     else // Way 2 - Check the Game Name
         if (installedGame.AppState?.Name?.Contains("Dead Cells") ?? false)
@@ -32,7 +32,7 @@ foreach (var installedGame in installedGames)
     continue;
 
 found:
-    Console.WriteLine($"Dead Cells Installed at \"{installedGame.GameInstalledDir}\" (steam acf: {installedGame.File})");
+    Console.WriteLine($"[appid: {installedGame.AppState.AppId}] {installedGame.AppState.Name} Installed at \"{installedGame.GameInstalledDir}\" (steam acf: {installedGame.File})");
     found = true;
     Debugger.Break();
 }
