@@ -3,6 +3,7 @@
     <File Path=".gitattributes" />
     <File Path=".gitignore" />
     <File Path="LICENSE" />
+    <File Path="README.EASY.md" />
     <File Path="README.md" />
   </Folder>
   <Project Path="LibLGFs.SteamLocal/LibLGFs.SteamLocal.csproj" />

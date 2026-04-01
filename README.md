@@ -1,28 +1,76 @@
-# LibLGFs.SteamLocal
+# 🚀 LibLGFs.SteamLocal
+**A lightweight, high-performance, production-ready .NET library for parsing Steam local files, game libraries, installation information, and ACF manifests.**
 
-### Example
-```csharp
-// Example - Check if game "Dead Cells" is installed
+No login required, no network connection, no Steam running — pure local file reading.
 
-using System.Diagnostics;
+## ✨ Features
+- Automatically locate the Steam installation directory (Registry + common path)
+- Scan all Steam library folders (automatic full-disk detection)
+- Parse ACF manifest files of all installed games
+- Retrieve game AppId, name, installation path, size, language, and update status
+- Automatically calculate the actual game installation directory
+- Fully asynchronous, high-performance, and non-blocking UI
+- Windows-only platform, stable and error-free
 
-bool found = false;
-var installedGames = await LibLGFs.SteamLocal.SteamLibrary.SteamApps.EnumInstalledGamesAsync();
-foreach (var installedGame in installedGames)
-{
-    if (installedGame.AppState?.AppId?.Equals("588650") ?? false)
-        goto found;
-    else // Way 2 - Check the Game Name
-        if (installedGame.AppState?.Name?.Contains("Dead Cells") ?? false)
-            goto found;
-
-    continue;
-
-found:
-    Console.WriteLine($"[appid: {installedGame.AppState.AppId}] {installedGame.AppState.Name} Installed at \"{installedGame.GameInstalledDir}\" (steam acf: {installedGame.File})");
-    found = true;
-    Debugger.Break();
-}
-if (!found)
-    Console.WriteLine("Game not found");
+## 📦 Installation (NuGet)
 ```
+Install-Package LibLGFs.SteamLocal
+```
+Or
+```
+dotnet add package LibLGFs.SteamLocal
+```
+
+## 🔎 Usage Examples
+### Get All Installed Games
+```csharp
+// Get all installed Steam games
+var games = await LibLGFs.SteamLocal.SteamLibrary.SteamApps.EnumInstalledGamesAsync();
+
+foreach (var game in games)
+{
+    Console.WriteLine($"AppId: {game.AppState?.AppId}");
+    Console.WriteLine($"Name: {game.AppState?.Name}");
+    Console.WriteLine($"Installation Directory: {game.GameInstalledDir}");
+    Console.WriteLine($"ACF File: {game.File}");
+    Console.WriteLine("---");
+}
+```
+
+### Check if a Specific Game is Installed (by AppId)
+```csharp
+var games = await LibLGFs.SteamLocal.SteamLibrary.SteamApps.EnumInstalledGamesAsync();
+
+var deadCells = games.FirstOrDefault(g => g.AppState?.AppId == "588650");
+
+if (deadCells != null)
+{
+    Console.WriteLine($"Installed: {deadCells.AppState.Name}");
+    Console.WriteLine($"Path: {deadCells.GameInstalledDir}");
+}
+else
+{
+    Console.WriteLine("Game not installed");
+}
+```
+
+### Scan Only the Default Steam Library
+```csharp
+var games = await SteamApps.EnumInstalledGamesForSteamLibraryAsync();
+```
+
+### Scan Steam Libraries on a Specific Drive
+```csharp
+var gamesD = await SteamApps.EnumInstalledGamesForDriverAsync(@"D:\");
+```
+
+## 🧩 Supported Files for Parsing
+- `appmanifest_*.acf` files parsing
+- Automatic Steam installation path detection
+
+## 🎯 Supported Platforms
+- **Windows Only** (x86/x64)
+- .NET 10
+
+## 📌 Author
+control0forver (TheLGF)
