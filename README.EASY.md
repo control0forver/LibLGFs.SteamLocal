@@ -1,5 +1,16 @@
 # LibLGFs.SteamLocal
 
+### Usage
+Add to your project
+```xml
+<ItemGroup Condition="'$(Configuration)' == 'Release'">
+  <PackageReference Include="LibLGFs.SteamLocal.Release" Version="1.0.0.4" />
+</ItemGroup>
+<ItemGroup Condition="'$(Configuration)' == 'Debug'"> 
+  <PackageReference Include="LibLGFs.SteamLocal.Debug" Version="1.0.0.4" />
+</ItemGroup>
+```
+
 ### Example
 ```csharp
 // Example - Check if game "Dead Cells" is installed

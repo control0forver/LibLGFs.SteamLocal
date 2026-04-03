@@ -14,11 +14,11 @@ No login required, no network connection, no Steam running — pure local file r
 
 ## 📦 Installation (NuGet)
 ```
-Install-Package LibLGFs.SteamLocal
+Install-Package LibLGFs.SteamLocal.Release
 ```
 Or
 ```
-dotnet add package LibLGFs.SteamLocal
+dotnet add package LibLGFs.SteamLocal.Release
 ```
 
 ## 🔎 Usage Examples
